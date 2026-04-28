@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-6@j3(#abkz!_c=c(5l^x+@t3&0-$2f$*o1udbs^s!b+m5p4^cp'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -87,7 +87,19 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = 'static/'
+import os
+
+# This is where Django will "collect" all static files for Render to serve
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# This ensures Django looks in your app folders for static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'), 
+]
+
+# CRITICAL for Render: Add WhiteNoise to serve these files
+# Make sure you have 'whitenoise.middleware.WhiteNoiseMiddleware' in your MIDDLEWARE
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
