@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* 1. Global Base Styles */
+@layer base {
+  :root {
+    --jg-blue: 32, 66, 227; 
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #081828;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* 2. Custom Components (JobGrids Blue & White Theme) */
+@layer components {
+  /* Signature Button */
+  .btn-jg {
+    @apply bg-[#2042e3] text-white px-8 py-3 rounded-[10px] font-bold transition-all duration-300 transform active:scale-95 inline-block text-center cursor-pointer;
+    box-shadow: 0 10px 15px -3px rgba(32, 66, 227, 0.2);
+  }
+
+  .btn-jg:hover {
+    @apply bg-blue-700;
+    box-shadow: 0 20px 25px -5px rgba(32, 66, 227, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Professional White Card */
+  .card-jg {
+    @apply bg-white border border-blue-50 rounded-[10px] p-6 transition-all duration-300;
+  }
+
+  .card-jg:hover {
+    @apply shadow-xl shadow-blue-100;
+    transform: translateY(-4px);
+  }
+
+  /* Sidebar Navigation Items */
+  .nav-item-jg {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg font-bold transition-all text-slate-500 hover:bg-blue-50 hover:text-[#2042e3] w-full;
+  }
+
+  .nav-item-jg-active {
+    @apply bg-[#2042e3] text-white shadow-lg shadow-blue-100;
+  }
+
+  /* FIXED: Contact Form Input Boxes */
+  .contact-input-jg {
+    @apply w-full h-[60px] px-5 bg-white rounded-[10px] outline-none border border-slate-200 
+           placeholder:text-slate-400 text-sm font-medium transition-all duration-300;
+  }
+
+  /* Focus state to replace the heavy black border from your screenshot */
+  .contact-input-jg:focus {
+    @apply border-[#2042e3] ring-4 ring-blue-50;
+  }
+
+  /* Special handling for the message area */
+  textarea.contact-input-jg {
+    @apply h-auto py-5 min-h-[150px];
+  }
+}
+
+/* 3. Utility Fixes (For Autofill issue in screenshot) */
+@layer utilities {
+  /* This prevents Chrome from turning your inputs blue/yellow during autofill */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #081828 !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}

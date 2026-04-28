@@ -1,0 +1,28 @@
+/* Custom smooth scrolling for the whole project */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom highlight color for text selection */
+::selection {
+  background-color: #2042e3;
+  color: white;
+}
+
+/* Modern scrollbar for the dashboards */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2042e3;
+}
